@@ -23,3 +23,7 @@ Route::get('/admin-dashboard', function () {
 Route::get('/student-dashboard', function () {
     return 'Welcome to the student dashboard!';
 })->middleware(['auth', 'role:student'])->name('student.dashboard');
+
+Route::get('/alumni/register', \App\Livewire\AlumniForm::class)
+    ->middleware(['auth'])
+    ->name('alumni.register');

@@ -26,6 +26,19 @@
             </div>
         </div>
         
+        <!-- Alumni Registration Section -->
+        <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 p-6 mb-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">🎓 Alumni Registration</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Register as an alumni to access career opportunities and stay connected with the community.</p>
+                </div>
+                <a href="{{ route('alumni.register') }}" class="bg-blue-600 dark:bg-blue-500 text-gray-100 dark:text-white font-bold px-6 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 cursor-pointer border-2 border-blue-700 dark:border-blue-400" wire:loading.attr="disabled">
+                    Register as Alumni
+                </a>
+            </div>
+        </div>
+        
         <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-gray-800 p-6">
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Learning Progress</h2>
             <div class="space-y-4">
