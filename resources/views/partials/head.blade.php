@@ -16,10 +16,18 @@
 <script>
     (() => {
         const storageKey = 'app.appearance';
-        const theme = localStorage.getItem(storageKey);
+        const fluxKey = 'flux.appearance';
+        const theme = localStorage.getItem(storageKey) || localStorage.getItem(fluxKey) || 'system';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const effectiveTheme = theme === 'system' ? (prefersDark ? 'dark' : 'light') : theme === 'rmmc' ? 'light' : theme;
+
+        document.documentElement.classList.toggle('dark', effectiveTheme === 'dark');
+        document.documentElement.classList.toggle('theme-rmmc', theme === 'rmmc');
 
         if (theme === 'rmmc') {
-            document.documentElement.classList.add('dark', 'theme-rmmc');
+            localStorage.setItem(fluxKey, 'light');
+        } else {
+            localStorage.setItem(fluxKey, theme);
         }
     })();
 </script>

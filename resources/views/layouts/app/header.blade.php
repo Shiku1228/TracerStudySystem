@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen page-surface dark:bg-[#040405] dark:text-[#c0c0c0]">
-        <flux:header container class="border-b border-[#731820] bg-[#f7f4ef] dark:border-[#731820] dark:bg-[#040405]">
+    <body class="min-h-screen page-surface text-[#040405] dark:bg-[#040405] dark:text-[#c0c0c0]">
+        <flux:header container class="border-b border-[#731820] bg-[#f7f4ef] text-[#040405] dark:border-[#731820] dark:bg-[#040405] dark:text-[#c0c0c0]">
             <flux:sidebar.toggle class="lg:hidden mr-2" icon="bars-2" inset="left" />
 
             <x-app-logo href="{{ route('dashboard') }}" wire:navigate />
@@ -46,7 +46,7 @@
         </flux:header>
 
         <!-- Mobile Menu -->
-        <flux:sidebar collapsible="mobile" sticky class="lg:hidden border-e border-[#731820] bg-[#040405] dark:border-[#731820] dark:bg-[#040405]">
+        <flux:sidebar collapsible="mobile" sticky class="lg:hidden border-e border-[#731820] bg-[#f7f4ef] text-[#040405] dark:border-[#731820] dark:bg-[#040405] dark:text-[#c0c0c0]">
             <flux:sidebar.header>
                 <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
                 <flux:sidebar.collapse class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />

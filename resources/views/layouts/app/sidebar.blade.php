@@ -3,8 +3,8 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen page-surface dark:bg-[#040405] dark:text-[#c0c0c0]">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-[#731820] bg-[#040405] dark:border-[#731820] dark:bg-[#040405]">
+    <body class="min-h-screen page-surface text-[#040405] dark:bg-[#040405] dark:text-[#c0c0c0]">
+        <flux:sidebar sticky collapsible="mobile" class="border-e border-[#731820] bg-[#f7f4ef] dark:border-[#731820] dark:bg-[#040405]">
             <flux:sidebar.header>
                 <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
                 <flux:sidebar.collapse class="lg:hidden" />
@@ -43,7 +43,7 @@
 
 
         <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden bg-[#f7f4ef] dark:bg-[#040405] border-b border-[#731820] dark:border-[#731820]">
+        <flux:header class="lg:hidden bg-[#f7f4ef] text-[#040405] dark:bg-[#040405] dark:text-[#c0c0c0] border-b border-[#731820] dark:border-[#731820]">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
             <flux:spacer />

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,20 +12,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
         @vite(['resources/css/app.css'])
     </head>
-    <body class="page-surface dark:bg-[#040405] text-[#040405] dark:text-[#c0c0c0] min-h-screen flex flex-col font-['Inter',sans-serif]">
+    <body class="page-surface text-[#040405] dark:bg-[#040405] dark:text-[#c0c0c0] min-h-screen flex flex-col font-['Inter',sans-serif]">
         <!-- Navigation -->
-        <header class="w-full border-b border-[#731820] bg-white/80 dark:border-[#731820] dark:bg-[#040405] backdrop-blur">
+        <header class="w-full border-b border-[#731820] bg-white/80 text-[#040405] dark:border-[#731820] dark:bg-[#040405] dark:text-[#c0c0c0] backdrop-blur">
             <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 bg-[#731820] rounded-lg flex items-center justify-center overflow-hidden">
                         <img src="{{ asset('app/logo.png') }}" alt="Tracer Study System" class="w-full h-full object-cover">
                     </div>
-                    <span class="font-semibold text-lg text-[#c0c0c0]">Tracer Study System</span>
+                    <span class="font-semibold text-lg text-[#040405] dark:text-[#c0c0c0]">Tracer Study System</span>
                 </div>
                 @if (Route::has('login'))
                     <nav class="flex items-center gap-3">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-5 py-2 bg-[#040405] dark:bg-[#c0c0c0] text-white dark:text-[#040405] rounded-lg font-medium hover:scale-105 transition-all">
+                            <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-5 py-2 bg-[#040405] text-white dark:bg-[#c0c0c0] dark:text-[#040405] rounded-lg font-medium hover:scale-105 transition-all">
                                 <span>Dashboard</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </a>
@@ -52,7 +52,7 @@
                                 Track, analyze, and connect with graduate success stories. A comprehensive platform for institutional research and alumni engagement.
                             </p>
                             <div class="flex items-center gap-4 pt-4">
-                                @auth
+                            @auth
                                     <a href="{{ url('/dashboard') }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-[#731820] hover:bg-[#961a1f] text-white rounded-lg font-semibold hover:scale-105 transition-all shadow-lg">
                                         <span>Go to Dashboard</span>
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <div class="relative">
-                            <div class="relative rounded-xl overflow-hidden border border-[#731820] shadow-2xl bg-[#040405] flex items-center justify-center p-8 min-h-[420px]">
+                            <div class="relative rounded-xl overflow-hidden border border-[#731820] shadow-2xl bg-[#f7f4ef] dark:bg-[#040405] flex items-center justify-center p-8 min-h-[420px]">
                                 <img src="{{ asset('app/logo.png') }}" alt="Tracer Study System" class="max-w-full max-h-[520px] w-auto h-auto object-contain transition-transform duration-500 hover:scale-105">
                             </div>
                         </div>
@@ -131,15 +131,15 @@
         </main>
 
         <!-- Footer -->
-        <footer class="w-full border-t border-[#731820] bg-white/80 dark:bg-[#040405] py-8 backdrop-blur">
+        <footer class="w-full border-t border-[#731820] bg-white/80 text-[#040405] dark:bg-[#040405] dark:text-[#c0c0c0] py-8 backdrop-blur">
             <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-[#731820] rounded flex items-center justify-center overflow-hidden">
                         <x-app-logo-icon class="size-4" />
                     </div>
-                    <span class="text-sm text-[#c0c0c0]">Tracer Study System</span>
+                    <span class="text-sm text-[#040405] dark:text-[#c0c0c0]">Tracer Study System</span>
                 </div>
-                <p class="text-sm text-[#c0c0c0]">2026 All rights reserved.</p>
+                <p class="text-sm text-[#040405] dark:text-[#c0c0c0]">2026 All rights reserved.</p>
             </div>
         </footer>
     </body>

@@ -1,41 +1,58 @@
 const APP_THEME_STORAGE_KEY = 'app.appearance';
 
 function getStoredAppearance() {
-    return localStorage.getItem(APP_THEME_STORAGE_KEY) || window.Flux?.appearance || 'system';
+    return localStorage.getItem(APP_THEME_STORAGE_KEY)
+        || localStorage.getItem('flux.appearance')
+        || window.Flux?.appearance
+        || 'system';
 }
 
-function applyRmmcAppearance(enabled) {
-    document.documentElement.classList.toggle('theme-rmmc', enabled);
+function prefersDarkScheme() {
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
 }
 
-function applyAppearance(appearance) {
-    if (!window.Flux?.applyAppearance) {
-        return;
+function resolveEffectiveAppearance(appearance) {
+    if (appearance === 'system') {
+        return prefersDarkScheme() ? 'dark' : 'light';
     }
 
     if (appearance === 'rmmc') {
-        localStorage.setItem(APP_THEME_STORAGE_KEY, 'rmmc');
-        window.Flux.applyAppearance('light');
-        applyRmmcAppearance(true);
-        return;
+        return 'light';
     }
 
+    return appearance;
+}
+
+function applyRootAppearance(appearance) {
+    const root = document.documentElement;
+    const isRmmc = appearance === 'rmmc';
+    const effectiveAppearance = resolveEffectiveAppearance(appearance);
+
+    root.classList.toggle('dark', effectiveAppearance === 'dark');
+    root.classList.toggle('theme-rmmc', isRmmc);
+}
+
+function applyAppearance(appearance) {
+    const fluxAppearance = appearance === 'rmmc' ? 'light' : appearance;
+
     localStorage.setItem(APP_THEME_STORAGE_KEY, appearance);
-    applyRmmcAppearance(false);
-    window.Flux.applyAppearance(appearance);
+    localStorage.setItem('flux.appearance', fluxAppearance);
+    applyRootAppearance(appearance);
+
+    if (window.Flux?.applyAppearance) {
+        window.Flux.applyAppearance(fluxAppearance);
+    }
 }
 
 function syncAppearance() {
     const appearance = getStoredAppearance();
+    const fluxAppearance = appearance === 'rmmc' ? 'light' : appearance;
 
-    if (appearance === 'rmmc') {
-        applyRmmcAppearance(true);
-        window.Flux?.applyAppearance('light');
-        return;
+    applyRootAppearance(appearance);
+
+    if (window.Flux?.applyAppearance) {
+        window.Flux.applyAppearance(fluxAppearance);
     }
-
-    applyRmmcAppearance(false);
-    window.Flux?.applyAppearance(appearance);
 }
 
 window.AppTheme = {
